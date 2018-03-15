@@ -34,7 +34,7 @@ class Database
         }
         catch(Exception $e)
         {
-            die("Erreur lors de la connexion à la base de données : .$e");
+            die("Erreur lors de la connexion à la base de données : $e");
         }
     }
 
