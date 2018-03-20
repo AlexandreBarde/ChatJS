@@ -1,14 +1,15 @@
 <?php
 
-
 require_once('../include/Database.php');
-
 
 class UserDAO
 {
 
     private $connection;
     private $table;
+    /**
+     * @var User
+     */
     private $user;
 
     public function __construct(Database $db)
@@ -48,10 +49,10 @@ class UserDAO
 
 
     /**
-     * Retourne un tableau qui contient les éléments d'un utilisateur ou faux si aucun utilisateur trouvé
-     * @param $id
-     * @return mixed
-     */
+ * Retourne un tableau qui contient les éléments d'un utilisateur ou faux si aucun utilisateur trouvé
+ * @param $id
+ * @return mixed
+ */
     public function getById($id)
     {
         $select = "SELECT * FROM " . $this->getTable() . " WHERE id_compte = ?";
@@ -65,6 +66,35 @@ class UserDAO
         return false;
     }
 
+    public function getByPseudo($pseudo)
+    {
+        $select = "SELECT * FROM " . $this->getTable() . " WHERE pseudo = ?";
+        $requete = $this->connection->prepare($select);
+        $requete->execute(array($this->getUser()->getPseudo()));
+        while($data = $requete->fetch())
+        {
+            return $data;
+        }
+        $requete->closeCursor();
+        return false;
+    }
 
+    public function tryConnect()
+    {
+        return ($this->getUser()->getPassword() == $this->getPasswordDB());
+    }
+
+    private function getPasswordDB()
+    {
+        $select = "SELECT password FROM " . $this->getTable() . " WHERE pseudo = ?";
+        $requete = $this->connection->prepare($select);
+        $requete->execute(array($this->getUser()->getLowerPseudo()));
+        while($data = $requete->fetch())
+        {
+            return $data['password'];
+        }
+        $requete->closeCursor();
+        return false;
+    }
 
 }

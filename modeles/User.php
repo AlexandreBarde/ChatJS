@@ -22,6 +22,11 @@ class User
         return $this->pseudo;
     }
 
+    public function getLowerPseudo()
+    {
+        return strtolower($this->pseudo);
+    }
+
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
