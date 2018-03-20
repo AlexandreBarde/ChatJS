@@ -37,4 +37,13 @@ class User
         $this->password = $password;
     }
 
+    public function toArray()
+    {
+        return array(
+            'id_compte' => $this->getIdUser(),
+            'pseudo' => $this->getPseudo(),
+            'mot_de_passe' => $this->getPassword()
+        );
+    }
+
 }
