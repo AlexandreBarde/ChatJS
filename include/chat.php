@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexandre
- * Date: 20/03/2018
- * Time: 21:54
+
+/*
+ * On va mettre le chat ici
+ * On va l'incude dans la page d'accueil que si la personne est connecté
  */

@@ -7,4 +7,13 @@ $machin = "prout";
 
 echo "blabla$truc\n";
 
-echo(Database::getInstance()->getString());
+//echo(Database::getInstance()->getString());
+
+if(isset($_SESSION['username']))
+{
+    // Include de la page du chat
+}
+else
+{
+    require("include/connexion.php");
+}
