@@ -43,6 +43,7 @@ CREATE TABLE `compte` (
 CREATE TABLE `message` (
   `id_message` int(11) NOT NULL,
   `id_compte` int(11) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   `contenu` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
