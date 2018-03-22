@@ -2,16 +2,27 @@
 
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['password']))
 {
-    require_once("include/Database.php");
+
+    require_once("Database.php");
 
     $pseudo = $_POST['pseudo'];
     $password = $_POST['password'];
 
+    echo "Tentative de connexion de " . $pseudo . " : " . $password;
+
     $db = Database::getInstance();
+
+    echo "OK 1";
+
     $userDAO = new UserDAO($db);
+
+    echo "OK 2";
+
     $user = $userDAO->getByPseudo($pseudo);
 
-    $user->tryConnect();
+    echo "Yolo";
+
+    $userDAO->tryConnect();
 
     echo "Tout est ok";
     /*

@@ -9,6 +9,8 @@ echo "blabla$truc\n";
 
 //echo(Database::getInstance()->getString());
 
+$db = Database::getInstance();
+
 if(isset($_SESSION['username']))
 {
     // Include de la page du chat
