@@ -8,7 +8,7 @@ $db = Database::getInstance();
 
 if(isset($_SESSION['username']))
 {
-    // Include de la page du chat
+    require("include/chat.php");
 }
 else
 {
