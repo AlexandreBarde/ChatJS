@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['password']))
 {
 
@@ -19,10 +21,14 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
 
     if($userDAO->tryConnect($pseudo, $password))
     {
+        $_SESSION['username'] = $pseudo;
+        header("Location: ../index.php");
         echo "Connexion ok";
     }
     else
     {
+        $_SESSION['erreur'] = 1;
+        header("Location: ../index.php");
         echo "Mauvais mdp";
     }
 
@@ -32,5 +38,6 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
 }
 else
 {
+    $_SESSION['erreur'] = 0;
     echo "Il manque des choses !";
 }
