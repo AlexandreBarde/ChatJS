@@ -95,7 +95,6 @@ class UserDAO
         $requete->execute(array($pseudo));
         while($data = $requete->fetch())
         {
-            var_dump($data);
             return $data['id_compte'];
         }
         $requete->closeCursor();
@@ -119,12 +118,12 @@ class UserDAO
      */
     private function getPasswordDB($pseudo)
     {
-        $select = "SELECT password FROM " . $this->getTable() . " WHERE pseudo = ?";
+        $select = "SELECT mot_de_passe FROM " . $this->getTable() . " WHERE pseudo = :pseudo";
         $requete = $this->connection->prepare($select);
-        $requete->execute(array($pseudo));
+        $requete->execute(array('pseudo' => $pseudo));
         while($data = $requete->fetch())
         {
-            return $data['password'];
+            return $data['mot_de_passe'];
         }
         $requete->closeCursor();
         return false;

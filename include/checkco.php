@@ -13,17 +13,9 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
 
     $db = Database::getInstance();
 
-    echo "OK 1<br />";
-
     $userDAO = new UserDAO($db);
 
-    echo "OK 2<br />";
-
     $testUser = $userDAO->getByPseudo($pseudo);
-
-    var_dump($testUser);
-
-    echo "Yolo<br />";
 
     if($userDAO->tryConnect($pseudo, $password))
     {
@@ -34,7 +26,6 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
         echo "Mauvais mdp";
     }
 
-    echo "Tout est ok<br />";
     /*
      * Création de session avec pour valeur le nom de l'utilisateur
      */
