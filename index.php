@@ -8,7 +8,7 @@ $db = Database::getInstance();
 
 if(isset($_SESSION['username']))
 {
-    require("include/chat.php");
+    header("Location: chat.php");
 }
 else
 {
@@ -22,7 +22,7 @@ else
                 unset($_SESSION['erreur']);
                 break;
             case 1:
-                echo "<div class=\"container\"><div class=\"alert alert-danger\" role=\"alert\">Mot de passe incorrect !</div></div>";
+                echo "<div class=\"container\"><div class=\"alert alert-danger\" role=\"alert\">Utilisateur ou mot de passe incorrect !</div></div>";
                 unset($_SESSION['erreur']);
                 break;
         }

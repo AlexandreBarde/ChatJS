@@ -1,24 +1,16 @@
 <?php
 
-session_start();
+session_start(); // Création d'une session
 
-if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['password']))
+if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['password'])) // Vérification des champs envoyés par l'utilisateur
 {
-
     require_once("Database.php");
     require("../modeles/UserDAO.php");
-
-    $pseudo = $_POST['pseudo'];
-    $password = $_POST['password'];
-
-    echo "Tentative de connexion de " . $pseudo . " : " . $password . "<br />";
-
-    $db = Database::getInstance();
-
-    $userDAO = new UserDAO($db);
-
+    $pseudo = $_POST['pseudo']; // Stockage du pseudo passé en paramètre
+    $password = $_POST['password']; // Stockage du mot de passe passé en paramètre
+    $db = Database::getInstance(); // Récupération de l'instance de notre connexion à la base de données
+    $userDAO = new UserDAO($db); // Création d'un utilisateur DAO
     $testUser = $userDAO->getByPseudo($pseudo);
-
     if($userDAO->tryConnect($pseudo, $password))
     {
         $_SESSION['username'] = $pseudo;
@@ -31,10 +23,6 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
         header("Location: ../index.php");
         echo "Mauvais mdp";
     }
-
-    /*
-     * Création de session avec pour valeur le nom de l'utilisateur
-     */
 }
 else
 {
