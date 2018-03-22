@@ -20,6 +20,10 @@ if(!isset($_SESSION['username']))
     <title>ChatJS</title>
 </head>
     <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">ChatJS</a>
+        <span class="navbar-text"><?= $_SESSION['username'] ?></span>
+    </nav>
     <br />
     <div class="container">
         <div class="card">
@@ -38,7 +42,7 @@ if(!isset($_SESSION['username']))
                 <small class="form-text text-muted">Il y a 30 secondes</small>
                 <div class="dropdown-divider"></div>
                 <form class="form-row">
-                    <div class="col-11">
+                    <div class="col-10">
                         <label class="sr-only" for="inlineFormInputName2">Message</label>
                         <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Votre message">
                     </div>
