@@ -4,27 +4,37 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
 {
 
     require_once("Database.php");
+    require("../modeles/UserDAO.php");
 
     $pseudo = $_POST['pseudo'];
     $password = $_POST['password'];
 
-    echo "Tentative de connexion de " . $pseudo . " : " . $password;
+    echo "Tentative de connexion de " . $pseudo . " : " . $password . "<br />";
 
     $db = Database::getInstance();
 
-    echo "OK 1";
+    echo "OK 1<br />";
 
     $userDAO = new UserDAO($db);
 
-    echo "OK 2";
+    echo "OK 2<br />";
 
-    $user = $userDAO->getByPseudo($pseudo);
+    $testUser = $userDAO->getByPseudo($pseudo);
 
-    echo "Yolo";
+    var_dump($testUser);
 
-    $userDAO->tryConnect();
+    echo "Yolo<br />";
 
-    echo "Tout est ok";
+    if($userDAO->tryConnect($pseudo, $password))
+    {
+        echo "Connexion ok";
+    }
+    else
+    {
+        echo "Mauvais mdp";
+    }
+
+    echo "Tout est ok<br />";
     /*
      * Création de session avec pour valeur le nom de l'utilisateur
      */

@@ -1,6 +1,7 @@
 <?php
 
 require_once('../include/Database.php');
+require("User.php");
 
 class UserDAO
 {
@@ -12,23 +13,37 @@ class UserDAO
      */
     private $user;
 
+    /**
+     * Constructeur de la classe UserDAO
+     * UserDAO constructor.
+     * @param Database $db
+     */
     public function __construct(Database $db)
     {
         $this->connection = $db->getConnection();
         $this->table = "compte";
     }
 
+    /** Retourne la table
+     * @return string
+     */
     public function getTable()
     {
         return $this->table;
     }
 
+    /**
+     * @param User $user
+     */
     public function setUser(User $user)
     {
         $this->user = $user;
     }
 
-
+    /**
+     * Retourne l'utilisateur User
+     * @return User
+     */
     private function getUser()
     {
         return $this->user;
@@ -49,10 +64,11 @@ class UserDAO
 
 
     /**
- * Retourne un tableau qui contient les éléments d'un utilisateur ou faux si aucun utilisateur trouvé
- * @param $id
- * @return mixed
- */
+     * Retourne un tableau qui contient les éléments d'un utilisateur ou faux si aucun utilisateur trouvé
+     * en fonction de son id
+     * @param $id
+     * @return mixed
+     */
     public function getById($id)
     {
         $select = "SELECT * FROM " . $this->getTable() . " WHERE id_compte = ?";
@@ -66,29 +82,46 @@ class UserDAO
         return false;
     }
 
+    /**
+     * Retourne un tableau qui contient les élement d'un utilisateur ou faux si aucun utilisateur trouvé
+     * en fonction de son pseudo
+     * @param $pseudo
+     * @return bool|mixed
+     */
     public function getByPseudo($pseudo)
     {
         $select = "SELECT * FROM " . $this->getTable() . " WHERE pseudo = ?";
         $requete = $this->connection->prepare($select);
-        $requete->execute(array($this->getUser()->getPseudo()));
+        $requete->execute(array($pseudo));
         while($data = $requete->fetch())
         {
-            return $data;
+            var_dump($data);
+            return $data['id_compte'];
         }
         $requete->closeCursor();
         return false;
     }
 
-    public function tryConnect()
+    /**
+     * Retourne vrai si le mot de passe de la base de données correspond au mot de passe qui est stocké en paramètre
+     * @param $password
+     * @return bool
+     */
+    public function tryConnect($pseudo, $password)
     {
-        return ($this->getUser()->getPassword() == $this->getPasswordDB());
+        return ($password == $this->getPasswordDB($pseudo));
     }
 
-    private function getPasswordDB()
+    /**
+     * Retourne le mot de passe de l'utilisateur stocké dans la base de données
+     * Retourne faux si l'utilisateur n'a pas été trouvé
+     * @return bool
+     */
+    private function getPasswordDB($pseudo)
     {
         $select = "SELECT password FROM " . $this->getTable() . " WHERE pseudo = ?";
         $requete = $this->connection->prepare($select);
-        $requete->execute(array($this->getUser()->getLowerPseudo()));
+        $requete->execute(array($pseudo));
         while($data = $requete->fetch())
         {
             return $data['password'];
