@@ -106,9 +106,9 @@ class UserDAO
      * @param $password
      * @return bool
      */
-    public function tryConnect($pseudo, $password)
+    public function tryConnect()
     {
-        return ($password == $this->getPasswordDB($pseudo));
+        return ($this->getUser()->getPassword() == $this->getPasswordDB($this->getUser()->getPseudo()));
     }
 
     /**

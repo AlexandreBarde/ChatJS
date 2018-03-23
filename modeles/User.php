@@ -7,6 +7,9 @@ class User
     private $pseudo;
     private $password;
 
+    public function __construct()
+    {}
+
     public function getIdUser()
     {
         return $this->id_user;

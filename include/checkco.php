@@ -10,8 +10,14 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
     $password = $_POST['password']; // Stockage du mot de passe passé en paramètre
     $db = Database::getInstance(); // Récupération de l'instance de notre connexion à la base de données
     $userDAO = new UserDAO($db); // Création d'un utilisateur DAO
-    $testUser = $userDAO->getByPseudo($pseudo);
-    if($userDAO->tryConnect($pseudo, $password))
+
+    $user = new User(); // Création d'un utilisateur
+    $user->setPseudo($pseudo); // Attribution du pseudo à l'objet User
+    $user->setPassword($password); // Attribution du mot de passe à l'objet User
+
+    $userDAO->setUser($user);
+
+    if($userDAO->tryConnect())
     {
         $_SESSION['username'] = $pseudo;
         header("Location: ../index.php");
