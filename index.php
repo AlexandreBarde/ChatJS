@@ -8,7 +8,7 @@ $db = Database::getInstance();
 
 if(isset($_SESSION['username']))
 {
-    header("Location: chat.php");
+    header("Location: chat/");
 }
 else
 {
@@ -23,6 +23,10 @@ else
                 break;
             case 1:
                 echo "<div class=\"container\"><div class=\"alert alert-danger\" role=\"alert\">Utilisateur ou mot de passe incorrect !</div></div>";
+                unset($_SESSION['erreur']);
+                break;
+            case 2:
+                echo "<div class=\"container\"><div class=\"alert alert-danger\" role=\"alert\">Veuillez vous connecter !</div></div>";
                 unset($_SESSION['erreur']);
                 break;
         }
