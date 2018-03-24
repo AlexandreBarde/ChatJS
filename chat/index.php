@@ -20,11 +20,12 @@ if(!isset($_SESSION['username']))
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous"><title>ChatJS</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
     <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand">ChatJS</a>
-        <span class="navbar-text"><?= $_SESSION['username'] ?></span>
+        <span id="username" class="navbar-text"><?= $_SESSION['username'] ?></span>
         <button type="button" class="btn btn-outline-danger">Se déconnecter</button>
     </nav>
     <br />
@@ -50,11 +51,12 @@ if(!isset($_SESSION['username']))
                         <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Votre message">
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-primary mb-2">Envoyer</button>
+                        <button id="boutonSubmit" type="submit" class="btn btn-primary mb-2">Envoyer</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script src="ScriptJS.js"></script>
     </body>
 </html>

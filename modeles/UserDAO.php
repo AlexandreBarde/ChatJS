@@ -90,9 +90,9 @@ class UserDAO
      */
     public function getByPseudo($pseudo)
     {
-        $select = "SELECT * FROM " . $this->getTable() . " WHERE pseudo = ?";
+        $select = "SELECT * FROM " . $this->getTable() . " WHERE pseudo = :pseudo";
         $requete = $this->connection->prepare($select);
-        $requete->execute(array($pseudo));
+        $requete->execute(array('pseudo' => $pseudo));
         while($data = $requete->fetch())
         {
             return $data['id_compte'];

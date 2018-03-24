@@ -7,10 +7,13 @@ class Message {
    **/
    private $_user;
    private $_idMessage;
+
+    public function __construct()
+    {}
    
    public function getUser()
    {
-      return $this->$_user->getPseudo();
+      return $this->_user;
    }
 
    public function getContenu()
@@ -38,9 +41,9 @@ class Message {
       $this->_contenu = $contenu; 
    }
    
-   public function setTimestamp($timestamp)
+   public function setTimestamp()
    {
-      $this->_timestamp = $timestamp; 
+      $this->_timestamp = time();
    }
    
    public function setIdMessage($idM)

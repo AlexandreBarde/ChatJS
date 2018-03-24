@@ -13,12 +13,12 @@ class MessageDAO
    public function __construct(Database $db)
    {
       $this->_connection = $db->getConnection();
-      $this->table = "message";
+      $this->_table = "message";
    }
 
    public function getTable()
    {
-      return $this->table;
+      return $this->_table;
    }
    
    public function getMessage()
@@ -30,18 +30,20 @@ class MessageDAO
    {
       $this->_message = $message;
    }
-   
+
+   public function yo(){
+      return $this->_message->getContenu();
+   }
+
    /**
    * Retourne vrai si l'insertion s'est bien déroulée
    * @return bool
    **/
    public function saveMessage()
    {
-      $insert = "INSERT INTO " . $this->getTable() . "VALUES(:timestamp, :id_compte, :contenu)";
+      $insert = "INSERT INTO " . $this->getTable() . "(timestamp,id_compte,contenu) VALUES(".$this->_message->getTimestamp().", ".$this->_message->getUser()->getIdUser().", '".$this->_message->getContenu()."')";
       $requete = $this->_connection->prepare($insert);
-      return $requete->execute(array('timestamp' => $this->_message->getTimestamp(),
-                                     'id_compte') => $this->_message->getUser()->getIdUser(),
-                                     'contenu' => $this->_message->getContenu());
+      return $requete->execute();
    }
 }
 
