@@ -5,9 +5,9 @@ class MessageDAO
 {
    private $_connection;
    private $_table;
-   /**
-   *
-   **/
+    /**
+     * @var Message
+     */
    private $_message;
    
    public function __construct(Database $db)
@@ -41,7 +41,7 @@ class MessageDAO
    **/
    public function saveMessage()
    {
-      $insert = "INSERT INTO " . $this->getTable() . "(timestamp,id_compte,contenu) VALUES(".$this->_message->getTimestamp().", ".$this->_message->getUser()->getIdUser().", '".$this->_message->getContenu()."')";
+      $insert = "INSERT INTO " . $this->getTable() . " (timestamp,id_compte,contenu) VALUES(".$this->_message->getTimestamp().", ".$this->_message->getUser()->getIdUser().", '".$this->_message->getContenu()."')";
       $requete = $this->_connection->prepare($insert);
       return $requete->execute();
    }
