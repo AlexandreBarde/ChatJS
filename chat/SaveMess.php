@@ -4,7 +4,7 @@ include("../modeles/Message.php");
 include("../modeles/UserDAO.php");
 include("../modeles/MessageDAO.php");
 
-//Récuparation de la connexion à la BD
+//Récuperation de la connexion à la BD
 $db = Database::getInstance();
 
 //Création de l'objet Message basique
