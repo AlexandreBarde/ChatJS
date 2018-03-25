@@ -71,12 +71,12 @@ class UserDAO
      */
     public function getById($id)
     {
-        $select = "SELECT * FROM " . $this->getTable() . " WHERE id_compte = ?";
+        $select = "SELECT * FROM " . $this->getTable() . " WHERE id_compte = :id_compte";
         $requete = $this->connection->prepare($select);
-        $requete->execute(array($this->getUser()->getIdUser()));
+        $requete->execute(array('id_compte' => $id));
         while($data = $requete->fetch())
         {
-            return $data;
+            return $data['pseudo'];
         }
         $requete->closeCursor();
         return false;

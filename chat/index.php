@@ -26,13 +26,14 @@ if(!isset($_SESSION['username']))
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand">ChatJS</a>
         <span id="username" class="navbar-text"><?= $_SESSION['username'] ?></span>
-        <button type="button" class="btn btn-outline-danger">Se déconnecter</button>
+        <a href="destroy.php"><button type="button" class="btn btn-outline-danger">Se déconnecter</button></a>
     </nav>
     <br />
     <div class="container">
         <div class="card">
             <h5 class="card-header">Derniers message du chat</h5>
-            <div class="card-body">
+            <div id="affichage" class="card-body">
+                <!--
                 <h5 class="card-title">Pseudo 1</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet congue ipsum. Fusce at pretium nulla, eget vulputate urna. In maximus augue orci, eu gravida metus dignissim et. Nullam euismod cursus pretium. Curabitur quis porta ante. Proin eros magna, euismod in dictum et, vestibulum vel erat. Etiam commodo sapien in viverra ultricies. Nulla sapien odio, eleifend id ipsum vel, accumsan tristique lectus.</p>
                 <small class="form-text text-muted"><i class="fas fa-clock"></i> Il y a 25 minutes et 30 secondes</small>
@@ -45,6 +46,8 @@ if(!isset($_SESSION['username']))
                 <p class="card-text">Ceci est un message court.</p>
                 <small class="form-text text-muted"><i class="fas fa-clock"></i> Il y a 30 secondes</small>
                 <div class="dropdown-divider"></div>
+                -->
+                <div id="affichageFin"></div>
                 <form class="form-row">
                     <div class="col-10">
                         <label class="sr-only" for="inlineFormInputName2">Message</label>
