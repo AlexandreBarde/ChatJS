@@ -4,12 +4,12 @@ include("../modeles/UserDAO.php");
 
 function time_elapsed_B($secs){
     $bit = array(
-        ' year'        => $secs / 31556926 % 12,
-        ' week'        => $secs / 604800 % 52,
-        ' day'        => $secs / 86400 % 7,
-        ' hour'        => $secs / 3600 % 24,
+        ' année'        => $secs / 31556926 % 12,
+        ' semaine'        => $secs / 604800 % 52,
+        ' jour'        => $secs / 86400 % 7,
+        ' heure'        => $secs / 3600 % 24,
         ' minute'    => $secs / 60 % 60,
-        ' second'    => $secs % 60
+        ' seconde'    => $secs % 60
     );
 
     foreach($bit as $k => $v){
