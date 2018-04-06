@@ -32,7 +32,7 @@ if(!isset($_SESSION['username']))
     <div class="container">
         <div class="card-deck">
             <div class="card">
-                <h5 class="card-header">Derniers message du chat</h5>
+                <h5 class="card-header">Derniers messages du chat</h5>
                 <div id="affichage" class="card-body" style="height : 500px; overflow-y:scroll">
                     <div id="affichageFin"></div>
                 </div>
