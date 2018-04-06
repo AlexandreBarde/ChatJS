@@ -9,7 +9,7 @@ $db = Database::getInstance();
 
 //Création de l'objet Message basique
 $message = new Message();
-$message->setContenu($_GET['message']);
+$message->setContenu(htmlspecialchars($_GET['message']));
 $message->setTimestamp();
 
 //Création d'un userDAO pour recup l'id de l'utilisateur qui envoi le message
