@@ -1,11 +1,19 @@
-$("#boutonSubmit").on( "myCustomEvent", function() {
-    console.log("Event bien triggered");
-    console.log($("#inlineFormInputName2").val());
-    console.log($("#username").text());
-    var m = $("#inlineFormInputName2").val();
-    $.get("SaveMess.php",{message : m});
-    $("#inlineFormInputName2").val('');
-    setTimeout(reloadChat(),500);
+$("#boutonSubmit").on( "myCustomEvent", function()
+{
+    if($("#inlineFormInputName2").val().length === 0)
+    {
+        $("#erreur").text("Le message ne peut pas être vide !").show().fadeOut(2000);
+    }
+    else
+    {
+        console.log("Event bien triggered");
+        console.log($("#inlineFormInputName2").val());
+        console.log($("#username").text());
+        var m = $("#inlineFormInputName2").val();
+        $.get("SaveMess.php",{message : m});
+        $("#inlineFormInputName2").val('');
+        setTimeout(reloadChat(),500);
+    }
 });
 $( "#boutonSubmit" ).click(function (event) {
     event.preventDefault();

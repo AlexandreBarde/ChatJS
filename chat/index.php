@@ -44,6 +44,7 @@ if(!isset($_SESSION['username']))
                         </div>
                         <div class="col">
                             <button id="boutonSubmit" type="submit" class="btn btn-primary mb-2">Envoyer</button>
+                            <span style="color: red" id="erreur"> </span>
                         </div>
                     </form>
                 </div>
