@@ -27,6 +27,7 @@ function affichageChat()
             var fin = "<div class=\"dropdown-divider\"></div>";
             $("#affichage").prepend(id + h5 + p + t2 + fin);
             j = $("#affichage").find("span").last().text();
+            $("#affichage").scrollTop(9000);
         });
         convertTimeStamp();
     });
