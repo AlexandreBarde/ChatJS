@@ -102,7 +102,7 @@ function reloadChat(){
                 var id = "<span id='id_message' style='visibility : hidden'>"+val.id_message+"</span>";
                 var h5 = "<h5 class='card-title'>"+val.id_compte+"</h5>";
                 var p = "<p class='card-text'>"+val.contenu+"</p>";
-                var t = "<small class='form-text text-muted'><p class='time'><i class='fas fa-clock'></i>" + val.contenu + "</p><p style='visibility: hidden' class='timestamp'>" + val.timestamp + "</p></small>";
+                var t = "<small class='form-text text-muted'><i class='fas fa-clock' style='display: inline;'></i> <p class='time' style='display: inline'>" + val.contenu + "</p><p style='visibility: hidden' class='timestamp'>" + val.timestamp + "</p></small>";
                 var fin = "<div class=\"dropdown-divider\"></div>";
                 $("#affichageFin").append(id + h5 + p + t + fin);
                 j = $("#affichage").find("span").last().text();
