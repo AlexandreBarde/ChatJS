@@ -37,7 +37,8 @@ foreach($data as $row){
     $row['id_compte'] = $tmp;
     $old = $row['timestamp'];
     $now = time();
-    $row['timestamp'] = time_elapsed_B($now-$old);
+    //$row['timestamp'] = time_elapsed_B($now-$old);
+    $row['timestamp'] = $old;
     $tabMess[] = $row;
 }
 

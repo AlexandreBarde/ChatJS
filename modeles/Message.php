@@ -43,7 +43,8 @@ class Message {
    
    public function setTimestamp()
    {
-      $this->_timestamp = time();
+       date_default_timezone_set("Europe/Paris");
+       $this->_timestamp = time();
    }
    
    public function setIdMessage($idM)
