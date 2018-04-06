@@ -50,12 +50,9 @@ if(!isset($_SESSION['username']))
                 </div>
             </div>
             <div class="card">
-                <h5 class="card-header">Utilisateurs (2)</h5>
+                <h5 class="card-header">Utilisateurs (<span id="nombreUtilisateurs"></span>)</h5>
                 <div class="card-body">
-                    <p class="card-text">
-                        <p>Utilisateur 1</p>
-                        <div class="dropdown-divider"></div>
-                        <p>Utilisateur 2</p>
+                    <p id="utilisateurs" class="card-text">
                     </p>
                 </div>
             </div>

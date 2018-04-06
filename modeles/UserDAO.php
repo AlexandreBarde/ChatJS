@@ -129,4 +129,22 @@ class UserDAO
         return false;
     }
 
+    public function getTimeStamp()
+    {
+        date_default_timezone_set("Europe/Paris");
+        return time() + 2;
+    }
+
+    public function setConnected($pseudo)
+    {
+        $modify = "UPDATE " . $this->getTable() . " SET timestamp_connexion = :timestamp WHERE pseudo = :pseudo";
+        $requete = $this->connection->prepare($modify);
+        return $requete->execute(array(
+            'timestamp' => $this->getTimeStamp(),
+            'pseudo' => $pseudo
+        ));
+    }
+
+
+
 }

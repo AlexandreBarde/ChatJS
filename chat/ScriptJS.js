@@ -44,8 +44,10 @@ affichageChat();
 
 var j = $("#affichage").find("span").last().text();
 
-setInterval(function () {
+setInterval(function ()
+{
     reloadChat();
+    getUsers();
 },2000);
 
 function convertTimeStamp()
@@ -91,7 +93,8 @@ function convertTimeStamp()
 
 }
 
-function reloadChat(){
+function reloadChat()
+{
     $(document).load("GetMessChat.php",function (response)
     {
         var x = JSON.parse(response);
@@ -111,5 +114,24 @@ function reloadChat(){
             }
         });
         convertTimeStamp();
+    });
+}
+
+function getUsers()
+{
+    $("#utilisateurs").empty();
+    $(document).load("GetConnectedUser.php", function(response)
+    {
+        console.log(response);
+        var utilisateur = response.split(" ");
+        var nombreUtilisateurs = 0;
+        for(i = 0; i < utilisateur.length - 1; i++)
+        {
+            var utilisateurTMP = "<p>" + utilisateur[i] + "</p>";
+            var separateur = "<div class='dropdown-divider'></div>";
+            $("#utilisateurs").append(utilisateurTMP);
+            nombreUtilisateurs++;
+        }
+        $("#nombreUtilisateurs").text(nombreUtilisateurs);
     });
 }
