@@ -27,9 +27,9 @@ function affichageChat()
             var fin = "<div class=\"dropdown-divider\"></div>";
             $("#affichage").prepend(id + h5 + p + t2 + fin);
             j = $("#affichage").find("span").last().text();
-            $("#affichage").scrollTop(9000);
         });
         convertTimeStamp();
+        $("#affichage").scrollTop(9000);
     });
 }
 
@@ -109,6 +109,7 @@ function reloadChat(){
                 $("#affichageFin").append(id + h5 + p + t2 + fin);
                 j = $("#affichage").find("span").last().text();
                 console.log("valeur id message : " + val.id_message + " j : " + j);
+                $("#affichage").scrollTop(9000);
             }
         });
         convertTimeStamp();
