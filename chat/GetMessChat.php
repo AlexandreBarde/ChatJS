@@ -16,7 +16,7 @@ function time_elapsed_B($secs){
         if($v > 1)$ret[] = $v . $k . 's';
         if($v == 1)$ret[] = $v . $k;
     }
-    array_splice($ret, count($ret)-1, 0, 'et');
+    array_splice($ret, count($ret)-1, 0, ' ');
     $ret[] = '';
 
     return join(' ', $ret);

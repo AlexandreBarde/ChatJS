@@ -28,6 +28,7 @@ function affichageChat()
             j = $("#affichage").find("span").last().text();
         });
         convertTimeStamp();
+        $("#affichage").scrollTop(9000);
     });
 }
 
@@ -98,6 +99,7 @@ function reloadChat(){
                 $("#affichageFin").append(id + h5 + p + t + fin);
                 j = $("#affichage").find("span").last().text();
                 console.log("valeur id message : " + val.id_message + " j : " + j);
+                $("#affichage").scrollTop(9000);
             }
         });
         convertTimeStamp();
