@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 15 mars 2018 à 15:00
--- Version du serveur :  10.1.28-MariaDB
--- Version de PHP :  7.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Apr 06, 2018 at 11:49 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,25 +19,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `chatjs`
+-- Database: `chatjs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `compte`
+-- Table structure for table `compte`
 --
 
 CREATE TABLE `compte` (
   `id_compte` int(11) NOT NULL,
   `pseudo` varchar(50) NOT NULL,
-  `mot_de_passe` varchar(255) NOT NULL
+  `mot_de_passe` varchar(255) NOT NULL,
+  `timestamp_connexion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `compte`
+--
+
+INSERT INTO `compte` (`id_compte`, `pseudo`, `mot_de_passe`, `timestamp_connexion`) VALUES
+(1, 'Utilisateur1', '123', 1523051351),
+(2, 'Utilisateur2', '321', 1523047087);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
@@ -48,36 +57,44 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables déchargées
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id_message`, `id_compte`, `timestamp`, `contenu`) VALUES
+(1, 1, 1523051345, 'Ceci est un test');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `compte`
+-- Indexes for table `compte`
 --
 ALTER TABLE `compte`
-  ADD PRIMARY KEY (`id_compte`);
+  ADD PRIMARY KEY (`id_compte`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`);
 
 --
--- Index pour la table `message`
+-- Indexes for table `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id_message`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `compte`
+-- AUTO_INCREMENT for table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `id_compte` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `message`
+-- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
