@@ -27,11 +27,11 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['password
     {
         $_SESSION['erreur'] = 1;
         header("Location: ../index.php");
-        echo "Mauvais mdp";
+        echo "Mot de passe incorrecte !";
     }
 }
 else
 {
     $_SESSION['erreur'] = 0;
-    echo "Il manque des choses !";
+    echo "Le formulaire n'est pas complet !";
 }
